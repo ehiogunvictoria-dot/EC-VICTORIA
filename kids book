@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>E.C. Victoria | Magical Children's Books</title>
+
+<meta
+name="description"
+content="Official website of E.C. Victoria, author of magical children's adventures including The Whispering Farm, The Moon That Collected Dreams and The Road Log.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<!-- PRELOADER -->
+
+<div id="loader">
+
+<div class="loader-logo">
+
+<h1>E.C. Victoria</h1>
+
+<span>Stories Filled With Wonder</span>
+
+</div>
+
+</div>
+
+<!-- NAVIGATION -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+E.C.<span>Victoria</span>
+
+</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#books">Books</a></li>
+
+<li><a href="#author">Author</a></li>
+
+<li><a href="#journal">Journal</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<a href="#books" class="nav-btn">
+
+Explore Books
+
+</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section
+id="home"
+class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<p class="subtitle">
+
+Welcome to the Magical Library of
+
+</p>
+
+<h1>
+
+E.C. Victoria
+
+</h1>
+
+<h2>
+
+Where Every Story Begins With Wonder
+
+</h2>
+
+<p>
+
+Discover magical adventures filled with imagination, courage,
+friendship, and unforgettable journeys for young readers.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#books"
+class="primary">
+
+Explore Collection
+
+</a>
+
+<a href="#author"
+class="secondary">
+
+Meet The Author
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-book">
+
+<img
+src="images/whispering-farm.jpg"
+alt="The Whispering Farm">
+
+</div>
+
+</section>
+
+<!-- FEATURE -->
+
+<section class="intro">
+
+<div class="intro-left">
+
+<h2>
+
+Crafting Stories That Spark Imagination
+
+</h2>
+
+<p>
+
+Every book written by E.C. Victoria is carefully created to
+encourage children to dream bigger, believe in kindness,
+embrace adventure and discover the magic hidden in everyday
+life.
+
+</p>
+
+</div>
+
+<div class="intro-right">
+
+<div class="stat">
+
+<h3>3</h3>
+
+<p>Published Titles</p>
+
+</div>
+
+<div class="stat">
+
+<h3>100%</h3>
+
+<p>Original Stories</p>
+
+</div>
+
+<div class="stat">
+
+<h3>∞</h3>
+
+<p>Imagination</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BOOKS -->
+
+<section
+id="books"
+class="books">
+
+<div class="section-title">
+
+<p>COLLECTION</p>
+
+<h2>
+
+Explore Magical Worlds
+
+</h2>
+
+</div>
+
+<!-- BOOK 1 -->
+
+<div class="book">
+
+<div class="book-image">
+
+<img
+src="images/whispering-farm.jpg"
+alt="The Whispering Farm">
+
+</div>
+
+<div class="book-content">
+
+<span>Adventure • Ages 4–8</span>
+
+<h2>
+
+The Whispering Farm
+
+</h2>
+
+<p>
+
+Join Leo and Mia as they uncover enchanted secrets,
+hidden passages and magical mysteries waiting inside
+the Whispering Farm.
+
+</p>
+
+<a href="#"
+
+class="book-btn">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+<!-- BOOK 2 -->
+
+<div class="book reverse">
+
+<div class="book-image">
+
+<img
+src="images/moon-dreams.jpg"
+alt="The Moon That Collected Dreams">
+
+</div>
+
+<div class="book-content">
+
+<span>Bedtime Story • Ages 3–5</span>
+
+<h2>
+
+The Moon That Collected Dreams
+
+</h2>
+
+<p>
+
+Follow Tiko, the tiniest dinosaur, on a moonlit adventure to find a lost dream before sunrise. :contentReference[oaicite:0]{index=0}
+
+</p>
+
+<a href="#"
+
+class="book-btn">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+<!-- BOOK 3 -->
+
+<div
+id="journal"
+class="book">
+
+<div class="book-image">
+
+<img
+src="images/road-log.jpg"
+alt="The Road Log">
+
+</div>
+
+<div class="book-content">
+
+<span>Travel Journal</span>
+
+<h2>
+
+The Road Log
+
+</h2>
+
+<p>
+
+A beautifully designed journal created for travellers,
+dreamers and explorers to record every unforgettable
+journey.
+
+</p>
+
+<a href="#"
+
+class="book-btn">
+
+Discover
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- AUTHOR -->
+
+<section
+id="author"
+class="author">
+
+<div class="author-image">
+
+<img
+src="images/author.jpg"
+alt="E.C. Victoria">
+
+</div>
+
+<div class="author-content">
+
+<p>ABOUT THE AUTHOR</p>
+
+<h2>
+
+Ehima Chioma Victoria
+
+</h2>
+
+<h3>
+
+Writing as E.C. Victoria
+
+</h3>
+
+<p>
+
+E.C. Victoria creates enchanting children's stories that
+encourage imagination, courage, curiosity, friendship and
+hope. Every page invites young readers into magical worlds
+filled with wonder and unforgettable adventures.
+
+</p>
+
+<a href="#contact"
+
+class="primary">
+
+Let's Connect
+
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section
+id="contact"
+class="contact">
+
+<h2>
+
+Stay Connected
+
+</h2>
+
+<p>
+
+Be the first to hear about new books,
+special releases and magical adventures.
+
+</p>
+
+<form>
+
+<input
+type="text"
+placeholder="Your Name">
+
+<input
+type="email"
+placeholder="Email Address">
+
+<button>
+
+Join Newsletter
+
+</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 E.C. Victoria
+
+All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
