@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E.C. Victoria — books that inspire imagination, reflection and connection. Discover children's stories, journals and more.">
+  <meta name="author" content="E.C. Victoria">
+  <title>E.C. Victoria | Author & Storyteller</title>
+
+  <style>
+    :root {
+      --cream: #f8f4ed;
+      --paper: #fffdf9;
+      --ink: #25231f;
+      --muted: #716b61;
+      --gold: #b08a4a;
+      --gold-dark: #8f6b35;
+      --line: #e5ddd0;
+      --soft: #eee6d8;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: auto;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,253,249,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      letter-spacing: .12em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: .58rem;
+      letter-spacing: .3em;
+      color: var(--gold-dark);
+      margin-top: -4px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      font-family: Arial, sans-serif;
+      font-size: .82rem;
+      letter-spacing: .05em;
+    }
+
+    nav a:hover { color: var(--gold-dark); }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 700px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 100px 20px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(176,138,74,.10), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(176,138,74,.08), transparent 30%),
+        var(--cream);
+    }
+
+    .eyebrow {
+      color: var(--gold-dark);
+      font-family: Arial, sans-serif;
+      font-size: .76rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 6.7rem);
+      line-height: .95;
+      font-weight: 500;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero h1 em {
+      color: var(--gold-dark);
+      font-weight: normal;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 28px auto 35px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      border: 1px solid var(--gold-dark);
+      font-family: Arial, sans-serif;
+      font-size: .76rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: .25s ease;
+    }
+
+    .btn.primary {
+      background: var(--gold-dark);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--ink);
+      border-color: var(--ink);
+      color: white;
+    }
+
+    /* SECTIONS */
+    section { padding: 100px 0; }
+
+    .section-head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .section-head p { color: var(--muted); }
+
+    /* BOOKS */
+    #books { background: var(--paper); }
+
+    .books {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .book {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 18px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .book:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px rgba(45,38,28,.10);
+    }
+
+    .cover {
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(145deg, #e9dfcf, #cbb895);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255,255,255,.65);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      max-width: 90%;
+    }
+
+    .cover small {
+      font-family: Arial, sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-size: .65rem;
+    }
+
+    .cover h3 {
+      font-size: 2rem;
+      line-height: 1.05;
+      margin: 18px 0;
+      font-weight: 500;
+    }
+
+    .book:nth-child(2) .cover {
+      background: linear-gradient(145deg, #ded9ce, #a9a090);
+    }
+
+    .book:nth-child(3) .cover {
+      background: linear-gradient(145deg, #e5d5bd, #b99c72);
+    }
+
+    .book h3 { font-size: 1.55rem; font-weight: 500; }
+
+    .book p {
+      color: var(--muted);
+      font-size: .94rem;
+      margin: 9px 0 18px;
+    }
+
+    .text-link {
+      font-family: Arial, sans-serif;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .author-photo {
+      min-height: 480px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      padding: 30px;
+    }
+
+    .author-photo span {
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .about h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.05;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .about p { color: var(--muted); margin-bottom: 18px; }
+
+    .signature {
+      font-style: italic;
+      color: var(--gold-dark);
+      font-size: 1.5rem;
+      margin-top: 25px;
+    }
+
+    /* BLOG */
+    #blog { background: var(--paper); }
+
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .post {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    .post small {
+      font-family: Arial, sans-serif;
+      color: var(--gold-dark);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .post h3 {
+      font-size: 1.5rem;
+      line-height: 1.25;
+      margin: 13px 0;
+      font-weight: 500;
+    }
+
+    .post p { color: var(--muted); font-size: .92rem; }
+
+    /* NEWSLETTER */
+    .newsletter {
+      text-align: center;
+      background: var(--ink);
+      color: white;
+      padding: 80px 25px;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+    }
+
+    .newsletter p {
+      max-width: 600px;
+      margin: 15px auto 25px;
+      color: #d9d4cb;
+    }
+
+    .newsletter .btn {
+      border-color: #d9c8a9;
+      color: white;
+    }
+
+    /* CONTACT */
+    .contact {
+      max-width: 750px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 500;
+    }
+
+    .contact p { color: var(--muted); margin: 15px auto 30px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 35px 0;
+      background: var(--paper);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+      letter-spacing: .06em;
+    }
+
+    .socials a:hover { color: var(--gold-dark); }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      .menu { display: block; }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: var(--paper);
+        padding: 25px;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul.open { display: flex; }
+
+      .hero { min-height: 620px; }
+
+      .books, .posts { grid-template-columns: 1fr; }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .author-photo { min-height: 360px; }
+
+      section { padding: 75px 0; }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand">
+      E.C. VICTORIA
+      <span>AUTHOR & STORYTELLER</span>
+    </a>
+
+    <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+    <nav>
+      <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div>
+      <div class="eyebrow">Welcome to the world of E.C. Victoria</div>
+
+      <h1>Stories that <em>inspire</em>, imagine & connect.</h1>
+
+      <p>
+        Discover children's stories, journals and thoughtful books created
+        to spark imagination, encourage reflection and bring readers closer
+        to the stories that matter.
+      </p>
+
+      <div class="buttons">
+        <a href="#books" class="btn primary">Explore My Books</a>
+        <a href="#about" class="btn">Meet the Author</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="books">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">The Library</div>
+        <h2>Featured Books</h2>
+        <p>
+          Explore the growing collection of books by E.C. Victoria.
+          Replace the sample covers below with your actual book covers.
+        </p>
+      </div>
+
+      <div class="books">
+
+        <article class="book">
+          <div class="cover">
+            <div class="cover-content">
+              <small>Children's Story</small>
+              <h3>The Whispering Farm</h3>
+              <small>By E.C. Victoria</small>
+            </div>
+          </div>
+          <h3>The Whispering Farm</h3>
+          <p>
+            A magical children's story filled with curiosity, discovery
+            and the wonders waiting to be found around us.
+          </p>
+          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
+        </article>
+
+        <article class="book">
+          <div class="cover">
+            <div class="cover-content">
+              <small>Children's Book</small>
+              <h3>Your Book Title</h3>
+              <small>By E.C. Victoria</small>
+            </div>
+          </div>
+          <h3>Your Second Book</h3>
+          <p>
+            Add a short, engaging description of your second children's
+            book here.
+          </p>
+          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
+        </article>
+
+        <article class="book">
+          <div class="cover">
+            <div class="cover-content">
+              <small>Journal</small>
+              <h3>Your Journal</h3>
+              <small>By E.C. Victoria</small>
+            </div>
+          </div>
+          <h3>Your Journal</h3>
+          <p>
+            Add a short description explaining what makes your journal
+            useful and special to your readers.
+          </p>
+          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about">
+
+      <div class="author-photo">
+        <span>Replace this area with your author photograph</span>
+      </div>
+
+      <div>
+        <div class="eyebrow">About the Author</div>
+        <h2>Welcome to my little corner of the literary world.</h2>
+
+        <p>
+          I am E.C. Victoria, an author passionate about creating stories
+          that entertain, inspire imagination and leave readers with
+          something meaningful to carry with them.
+        </p>
+
+        <p>
+          My writing journey began with a simple belief: a good story can
+          open a door to another world. Through children's books, journals
+          and future projects, I hope to create books that readers can
+          enjoy, treasure and return to.
+        </p>
+
+        <p class="signature">— E.C. Victoria</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="eyebrow">From the Journal</div>
+        <h2>Stories, Ideas & Inspiration</h2>
+        <p>
+          Share your writing journey, book news, behind-the-scenes stories
+          and helpful articles with your readers.
+        </p>
+      </div>
+
+      <div class="posts">
+
+        <article class="post">
+          <small>Author Journey</small>
+          <h3>Behind the Story: The Whispering Farm</h3>
+          <p>
+            Share the inspiration, ideas and creative process behind your
+            first children's book.
+          </p>
+          <br>
+          <a href="#" class="text-link">Read Article →</a>
+        </article>
+
+        <article class="post">
+          <small>Children & Reading</small>
+          <h3>Why Stories Matter to a Child's Imagination</h3>
+          <p>
+            Write about the importance of storytelling, reading and
+            imagination in childhood.
+          </p>
+          <br>
+          <a href="#" class="text-link">Read Article →</a>
+        </article>
+
+        <article class="post">
+          <small>Writing Life</small>
+          <h3>My Journey as an Independent Author</h3>
+          <p>
+            Tell readers about your experience creating and publishing
+            your books.
+          </p>
+          <br>
+          <a href="#" class="text-link">Read Article →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <h2>Be the first to hear about new books.</h2>
+      <p>
+        Invite readers to follow your journey and receive announcements
+        about new releases, stories and author updates.
+      </p>
+      <a href="YOUR-EMAIL-SIGNUP-LINK-HERE" class="btn">Join the Reading List</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Let's Connect</h2>
+      <p>
+        For questions, collaborations, book-related enquiries or simply
+        to say hello, I'd love to hear from you.
+      </p>
+
+      <div class="buttons">
+        <a href="mailto:YOUR-EMAIL-HERE@example.com" class="btn primary">Email E.C. Victoria</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="copyright">
+      © <span id="year"></span> E.C. Victoria. All rights reserved.
+    </div>
+
+    <div class="socials">
+      <a href="YOUR-FACEBOOK-LINK" target="_blank">Facebook</a>
+      <a href="YOUR-INSTAGRAM-LINK" target="_blank">Instagram</a>
+      <a href="YOUR-YOUTUBE-LINK" target="_blank">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
+  }
+
+  document.querySelectorAll("#navLinks a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("navLinks").classList.remove("open");
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
