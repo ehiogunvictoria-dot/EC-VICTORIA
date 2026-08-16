@@ -1,706 +1,3101 @@
-Library
-/
-index.html
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="E.C. Victoria — books that inspire imagination, reflection and connection. Discover children's stories, journals and more.">
-  <meta name="author" content="E.C. Victoria">
-  <title>E.C. Victoria | Author & Storyteller</title>
-
-  <style>
-    :root {
-      --cream: #f8f4ed;
-      --paper: #fffdf9;
-      --ink: #25231f;
-      --muted: #716b61;
-      --gold: #b08a4a;
-      --gold-dark: #8f6b35;
-      --line: #e5ddd0;
-      --soft: #eee6d8;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: auto;
-    }
-
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,253,249,.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      font-size: 1.35rem;
-      letter-spacing: .12em;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      display: block;
-      font-family: Arial, sans-serif;
-      font-size: .58rem;
-      letter-spacing: .3em;
-      color: var(--gold-dark);
-      margin-top: -4px;
-      text-align: center;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-      font-family: Arial, sans-serif;
-      font-size: .82rem;
-      letter-spacing: .05em;
-    }
-
-    nav a:hover { color: var(--gold-dark); }
-
-    .menu {
-      display: none;
-      border: 1px solid var(--line);
-      background: transparent;
-      padding: 9px 12px;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 700px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 100px 20px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(176,138,74,.10), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(176,138,74,.08), transparent 30%),
-        var(--cream);
-    }
-
-    .eyebrow {
-      color: var(--gold-dark);
-      font-family: Arial, sans-serif;
-      font-size: .76rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 8vw, 6.7rem);
-      line-height: .95;
-      font-weight: 500;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .hero h1 em {
-      color: var(--gold-dark);
-      font-weight: normal;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: 28px auto 35px;
-      color: var(--muted);
-      font-size: 1.12rem;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 25px;
-      border: 1px solid var(--gold-dark);
-      font-family: Arial, sans-serif;
-      font-size: .76rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      transition: .25s ease;
-    }
-
-    .btn.primary {
-      background: var(--gold-dark);
-      color: white;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: var(--ink);
-      border-color: var(--ink);
-      color: white;
-    }
-
-    /* SECTIONS */
-    section { padding: 100px 0; }
-
-    .section-head {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 55px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2.2rem, 5vw, 3.7rem);
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 15px;
-    }
-
-    .section-head p { color: var(--muted); }
-
-    /* BOOKS */
-    #books { background: var(--paper); }
-
-    .books {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .book {
-      background: white;
-      border: 1px solid var(--line);
-      padding: 18px;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .book:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 18px 45px rgba(45,38,28,.10);
-    }
-
-    .cover {
-      aspect-ratio: 4 / 5;
-      background: linear-gradient(145deg, #e9dfcf, #cbb895);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 35px;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 22px;
-    }
-
-    .cover::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(255,255,255,.65);
-    }
-
-    .cover-content {
-      position: relative;
-      z-index: 1;
-      max-width: 90%;
-    }
-
-    .cover small {
-      font-family: Arial, sans-serif;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      font-size: .65rem;
-    }
-
-    .cover h3 {
-      font-size: 2rem;
-      line-height: 1.05;
-      margin: 18px 0;
-      font-weight: 500;
-    }
-
-    .book:nth-child(2) .cover {
-      background: linear-gradient(145deg, #ded9ce, #a9a090);
-    }
-
-    .book:nth-child(3) .cover {
-      background: linear-gradient(145deg, #e5d5bd, #b99c72);
-    }
-
-    .book h3 { font-size: 1.55rem; font-weight: 500; }
-
-    .book p {
-      color: var(--muted);
-      font-size: .94rem;
-      margin: 9px 0 18px;
-    }
-
-    .text-link {
-      font-family: Arial, sans-serif;
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-    }
-
-    /* ABOUT */
-    .about {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .author-photo {
-      min-height: 480px;
-      background: var(--soft);
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      text-align: center;
-      padding: 30px;
-    }
-
-    .author-photo span {
-      font-family: Arial, sans-serif;
-      font-size: .75rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .about h2 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 1.05;
-      font-weight: 500;
-      margin-bottom: 25px;
-    }
-
-    .about p { color: var(--muted); margin-bottom: 18px; }
-
-    .signature {
-      font-style: italic;
-      color: var(--gold-dark);
-      font-size: 1.5rem;
-      margin-top: 25px;
-    }
-
-    /* BLOG */
-    #blog { background: var(--paper); }
-
-    .posts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .post {
-      border-top: 1px solid var(--line);
-      padding-top: 22px;
-    }
-
-    .post small {
-      font-family: Arial, sans-serif;
-      color: var(--gold-dark);
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .post h3 {
-      font-size: 1.5rem;
-      line-height: 1.25;
-      margin: 13px 0;
-      font-weight: 500;
-    }
-
-    .post p { color: var(--muted); font-size: .92rem; }
-
-    /* NEWSLETTER */
-    .newsletter {
-      text-align: center;
-      background: var(--ink);
-      color: white;
-      padding: 80px 25px;
-    }
-
-    .newsletter h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 500;
-    }
-
-    .newsletter p {
-      max-width: 600px;
-      margin: 15px auto 25px;
-      color: #d9d4cb;
-    }
-
-    .newsletter .btn {
-      border-color: #d9c8a9;
-      color: white;
-    }
-
-    /* CONTACT */
-    .contact {
-      max-width: 750px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      font-weight: 500;
-    }
-
-    .contact p { color: var(--muted); margin: 15px auto 30px; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 35px 0;
-      background: var(--paper);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .copyright {
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: .75rem;
-    }
-
-    .socials {
-      display: flex;
-      gap: 18px;
-      font-family: Arial, sans-serif;
-      font-size: .75rem;
-      letter-spacing: .06em;
-    }
-
-    .socials a:hover { color: var(--gold-dark); }
-
-    /* MOBILE */
-    @media (max-width: 800px) {
-      .menu { display: block; }
-
-      nav ul {
-        display: none;
-        position: absolute;
-        top: 78px;
-        left: 0;
-        right: 0;
-        background: var(--paper);
-        padding: 25px;
-        border-bottom: 1px solid var(--line);
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav ul.open { display: flex; }
-
-      .hero { min-height: 620px; }
-
-      .books, .posts { grid-template-columns: 1fr; }
-
-      .about {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .author-photo { min-height: 360px; }
-
-      section { padding: 75px 0; }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="author" content="E.C. Victoria">
+
+<meta name="description"
+content="E.C. Victoria Children's Books — magical adventures and beautifully imagined stories created to inspire curiosity, courage, kindness and wonder in young readers.">
+
+<meta name="keywords"
+content="children's books, kids books, picture books, bedtime stories, books for ages 3-5, children's author, E.C. Victoria, magical children's stories">
+
+<meta name="robots" content="index, follow">
+
+<title>E.C. Victoria | Children's Books & Magical Stories</title>
+
+
+<!-- =========================================================
+     FONTS
+========================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+rel="stylesheet">
+
+
+<!-- =========================================================
+     WEBSITE STYLE
+========================================================= -->
+
+<style>
+
+:root{
+
+--navy:#101c36;
+--navy-dark:#081126;
+--blue:#1b3159;
+
+--gold:#c9a45c;
+--gold-light:#ead39a;
+
+--ivory:#fbf9f4;
+--cream:#f1ecdf;
+
+--white:#ffffff;
+
+--text:#263249;
+--muted:#6d7687;
+
+--border:rgba(16,28,54,.12);
+
+--shadow:0 25px 70px rgba(16,28,54,.14);
+
+--radius:20px;
+
+}
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+
+body{
+
+font-family:"DM Sans",sans-serif;
+
+background:var(--ivory);
+
+color:var(--text);
+
+line-height:1.7;
+
+}
+
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+
+.container{
+
+width:min(1180px,92%);
+
+margin:auto;
+
+}
+
+
+/* =========================================================
+   TOP MESSAGE
+========================================================= */
+
+.top-message{
+
+background:var(--navy-dark);
+
+color:var(--gold-light);
+
+text-align:center;
+
+padding:9px 15px;
+
+font-size:10px;
+
+letter-spacing:2.5px;
+
+text-transform:uppercase;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+background:rgba(251,249,244,.96);
+
+backdrop-filter:blur(15px);
+
+border-bottom:1px solid var(--border);
+
+}
+
+
+.nav{
+
+min-height:82px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:30px;
+
+}
+
+
+.logo{
+
+display:flex;
+
+flex-direction:column;
+
+line-height:1.1;
+
+}
+
+
+.logo-name{
+
+font-family:"Playfair Display",serif;
+
+font-size:25px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:var(--navy);
+
+}
+
+
+.logo-subtitle{
+
+font-size:9px;
+
+font-weight:700;
+
+letter-spacing:3px;
+
+color:var(--gold);
+
+text-transform:uppercase;
+
+margin-top:5px;
+
+}
+
+
+.nav-links{
+
+display:flex;
+
+align-items:center;
+
+gap:27px;
+
+list-style:none;
+
+font-size:12px;
+
+font-weight:700;
+
+}
+
+
+.nav-links a{
+
+transition:.25s;
+
+}
+
+
+.nav-links a:hover{
+
+color:var(--gold);
+
+}
+
+
+.nav-shop{
+
+background:var(--navy);
+
+color:white !important;
+
+padding:11px 20px;
+
+border-radius:50px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+position:relative;
+
+overflow:hidden;
+
+background:
+
+radial-gradient(circle at 78% 20%,
+rgba(201,164,92,.25),
+transparent 30%),
+
+linear-gradient(
+135deg,
+#09142d,
+#192f57 60%,
+#101c36
+);
+
+color:white;
+
+}
+
+
+.hero:before{
+
+content:"✦";
+
+position:absolute;
+
+left:7%;
+
+top:100px;
+
+color:var(--gold-light);
+
+font-size:22px;
+
+opacity:.8;
+
+}
+
+
+.hero:after{
+
+content:"✦  ·  ✧  ·  ✦";
+
+position:absolute;
+
+right:7%;
+
+top:110px;
+
+color:rgba(255,255,255,.4);
+
+letter-spacing:14px;
+
+}
+
+
+.hero-inner{
+
+min-height:700px;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+align-items:center;
+
+gap:70px;
+
+padding:75px 0;
+
+}
+
+
+.hero-label{
+
+font-size:11px;
+
+font-weight:700;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+color:var(--gold-light);
+
+margin-bottom:18px;
+
+}
+
+
+.hero h1{
+
+font-family:"Playfair Display",serif;
+
+font-size:clamp(48px,6vw,76px);
+
+font-weight:600;
+
+line-height:1.05;
+
+margin-bottom:24px;
+
+}
+
+
+.hero h1 span{
+
+color:var(--gold-light);
+
+}
+
+
+.hero-description{
+
+font-size:17px;
+
+color:rgba(255,255,255,.76);
+
+max-width:570px;
+
+margin-bottom:32px;
+
+}
+
+
+.hero-buttons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:14px;
+
+}
+
+
+.button{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+min-height:50px;
+
+padding:0 25px;
+
+border-radius:50px;
+
+font-size:11px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+transition:.3s;
+
+}
+
+
+.button-gold{
+
+background:var(--gold);
+
+color:var(--navy);
+
+}
+
+
+.button-gold:hover{
+
+background:var(--gold-light);
+
+transform:translateY(-2px);
+
+}
+
+
+.button-outline{
+
+border:1px solid rgba(255,255,255,.4);
+
+color:white;
+
+}
+
+
+.button-outline:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+
+.hero-book{
+
+display:flex;
+
+justify-content:center;
+
+position:relative;
+
+}
+
+
+.hero-book:before{
+
+content:"";
+
+position:absolute;
+
+width:430px;
+
+height:430px;
+
+border-radius:50%;
+
+background:rgba(201,164,92,.13);
+
+filter:blur(35px);
+
+}
+
+
+.hero-book img{
+
+position:relative;
+
+width:min(400px,85%);
+
+border-radius:8px;
+
+box-shadow:
+
+0 40px 90px rgba(0,0,0,.5);
+
+transform:rotate(1deg);
+
+transition:.4s;
+
+}
+
+
+.hero-book img:hover{
+
+transform:rotate(0deg) translateY(-8px);
+
+}
+
+
+/* =========================================================
+   TRUST BAR
+========================================================= */
+
+.trust{
+
+background:white;
+
+border-bottom:1px solid var(--border);
+
+}
+
+
+.trust-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+text-align:center;
+
+}
+
+
+.trust-item{
+
+padding:27px;
+
+border-right:1px solid var(--border);
+
+}
+
+
+.trust-item:last-child{
+
+border-right:none;
+
+}
+
+
+.trust-title{
+
+font-size:12px;
+
+font-weight:700;
+
+color:var(--navy);
+
+}
+
+
+.trust-text{
+
+font-size:11px;
+
+color:var(--muted);
+
+margin-top:4px;
+
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+section{
+
+padding:105px 0;
+
+}
+
+
+.section-label{
+
+font-size:10px;
+
+font-weight:700;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+color:var(--gold);
+
+margin-bottom:14px;
+
+}
+
+
+.section-title{
+
+font-family:"Playfair Display",serif;
+
+font-size:clamp(36px,4vw,53px);
+
+line-height:1.15;
+
+color:var(--navy);
+
+margin-bottom:16px;
+
+}
+
+
+.section-description{
+
+color:var(--muted);
+
+max-width:700px;
+
+}
+
+
+/* =========================================================
+   FEATURED BOOK
+========================================================= */
+
+.featured{
+
+background:var(--ivory);
+
+}
+
+
+.featured-intro{
+
+margin-bottom:55px;
+
+}
+
+
+.featured-grid{
+
+display:grid;
+
+grid-template-columns:.85fr 1.15fr;
+
+gap:80px;
+
+align-items:center;
+
+}
+
+
+.featured-cover{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+
+.featured-cover img{
+
+width:min(420px,100%);
+
+border-radius:8px;
+
+box-shadow:var(--shadow);
+
+}
+
+
+.featured-title{
+
+font-family:"Playfair Display",serif;
+
+font-size:clamp(36px,4vw,55px);
+
+line-height:1.08;
+
+color:var(--navy);
+
+margin-bottom:12px;
+
+}
+
+
+.featured-subtitle{
+
+color:var(--gold);
+
+font-weight:600;
+
+font-size:14px;
+
+margin-bottom:22px;
+
+}
+
+
+.featured-text{
+
+color:var(--muted);
+
+margin-bottom:16px;
+
+}
+
+
+.book-tags{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:9px;
+
+margin:25px 0;
+
+}
+
+
+.book-tag{
+
+background:white;
+
+border:1px solid var(--border);
+
+padding:8px 14px;
+
+border-radius:50px;
+
+font-size:10px;
+
+font-weight:700;
+
+color:var(--navy);
+
+}
+
+
+/* =========================================================
+   BOOK LIBRARY
+========================================================= */
+
+.books{
+
+background:white;
+
+}
+
+
+.books-heading{
+
+text-align:center;
+
+max-width:750px;
+
+margin:0 auto 55px;
+
+}
+
+
+.books-heading .section-description{
+
+margin:auto;
+
+}
+
+
+.book-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+}
+
+
+.book-card{
+
+background:var(--ivory);
+
+border:1px solid var(--border);
+
+border-radius:18px;
+
+overflow:hidden;
+
+transition:.3s;
+
+}
+
+
+.book-card:hover{
+
+transform:translateY(-7px);
+
+box-shadow:var(--shadow);
+
+}
+
+
+.book-cover{
+
+background:#f2eee4;
+
+padding:20px;
+
+}
+
+
+.book-cover img{
+
+width:100%;
+
+aspect-ratio:3/4;
+
+object-fit:cover;
+
+border-radius:5px;
+
+box-shadow:0 15px 30px rgba(16,28,54,.15);
+
+}
+
+
+.placeholder{
+
+width:100%;
+
+aspect-ratio:3/4;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:25px;
+
+border-radius:5px;
+
+background:
+
+radial-gradient(circle at 50% 30%,
+rgba(201,164,92,.22),
+transparent 40%),
+
+linear-gradient(145deg,#172b51,#0d1934);
+
+color:white;
+
+font-family:"Playfair Display",serif;
+
+font-size:22px;
+
+}
+
+
+.book-content{
+
+padding:22px;
+
+}
+
+
+.book-number{
+
+font-size:9px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:var(--gold);
+
+text-transform:uppercase;
+
+margin-bottom:7px;
+
+}
+
+
+.book-title{
+
+font-family:"Playfair Display",serif;
+
+font-size:20px;
+
+line-height:1.2;
+
+color:var(--navy);
+
+margin-bottom:8px;
+
+}
+
+
+.book-description{
+
+font-size:11px;
+
+color:var(--muted);
+
+margin-bottom:18px;
+
+}
+
+
+.book-button{
+
+display:inline-flex;
+
+font-size:10px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+color:var(--navy);
+
+}
+
+
+.book-button:hover{
+
+color:var(--gold);
+
+}
+
+
+/* =========================================================
+   STORY VALUES
+========================================================= */
+
+.values{
+
+background:var(--cream);
+
+}
+
+
+.values-heading{
+
+max-width:700px;
+
+margin-bottom:50px;
+
+}
+
+
+.values-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+}
+
+
+.value-card{
+
+background:rgba(255,255,255,.72);
+
+border:1px solid var(--border);
+
+border-radius:18px;
+
+padding:33px;
+
+}
+
+
+.value-number{
+
+font-family:"Playfair Display",serif;
+
+color:var(--gold);
+
+font-size:20px;
+
+margin-bottom:15px;
+
+}
+
+
+.value-card h3{
+
+font-family:"Playfair Display",serif;
+
+font-size:24px;
+
+color:var(--navy);
+
+margin-bottom:10px;
+
+}
+
+
+.value-card p{
+
+font-size:13px;
+
+color:var(--muted);
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+
+background:white;
+
+}
+
+
+.about-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:75px;
+
+align-items:center;
+
+}
+
+
+.author-card{
+
+background:var(--navy);
+
+color:white;
+
+padding:55px;
+
+border-radius:20px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.author-card:after{
+
+content:"✦";
+
+position:absolute;
+
+right:35px;
+
+top:20px;
+
+font-size:70px;
+
+color:rgba(201,164,92,.2);
+
+}
+
+
+.author-card .section-label{
+
+color:var(--gold-light);
+
+}
+
+
+.author-card h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:48px;
+
+line-height:1.1;
+
+margin-bottom:20px;
+
+}
+
+
+.author-card p{
+
+font-size:14px;
+
+color:rgba(255,255,255,.73);
+
+}
+
+
+.about-text h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:43px;
+
+line-height:1.15;
+
+color:var(--navy);
+
+margin-bottom:20px;
+
+}
+
+
+.about-text p{
+
+color:var(--muted);
+
+margin-bottom:17px;
+
+}
+
+
+/* =========================================================
+   PARENTS
+========================================================= */
+
+.parents{
+
+background:var(--ivory);
+
+}
+
+
+.parents-inner{
+
+text-align:center;
+
+max-width:850px;
+
+margin:auto;
+
+}
+
+
+.parents-inner h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:45px;
+
+line-height:1.15;
+
+color:var(--navy);
+
+margin-bottom:18px;
+
+}
+
+
+.parents-inner p{
+
+max-width:700px;
+
+margin:0 auto 30px;
+
+color:var(--muted);
+
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletter{
+
+background:
+
+radial-gradient(circle at 50% 0%,
+rgba(201,164,92,.18),
+transparent 45%),
+
+var(--navy);
+
+color:white;
+
+}
+
+
+.newsletter-inner{
+
+max-width:760px;
+
+margin:auto;
+
+text-align:center;
+
+}
+
+
+.newsletter .section-label{
+
+color:var(--gold-light);
+
+}
+
+
+.newsletter h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:45px;
+
+line-height:1.15;
+
+margin-bottom:16px;
+
+}
+
+
+.newsletter p{
+
+color:rgba(255,255,255,.72);
+
+margin-bottom:28px;
+
+}
+
+
+.email-box{
+
+display:flex;
+
+max-width:550px;
+
+margin:auto;
+
+background:white;
+
+border-radius:50px;
+
+padding:5px;
+
+}
+
+
+.email-box input{
+
+flex:1;
+
+border:none;
+
+outline:none;
+
+padding:13px 18px;
+
+border-radius:50px;
+
+font-family:inherit;
+
+}
+
+
+.email-box button{
+
+border:none;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+
+.coming{
+
+background:var(--cream);
+
+text-align:center;
+
+}
+
+
+.coming h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:45px;
+
+line-height:1.15;
+
+color:var(--navy);
+
+margin-bottom:16px;
+
+}
+
+
+.coming p{
+
+max-width:650px;
+
+margin:auto auto 30px;
+
+color:var(--muted);
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+
+background:white;
+
+}
+
+
+.contact-box{
+
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+
+padding:60px 30px;
+
+border:1px solid var(--border);
+
+border-radius:20px;
+
+background:var(--ivory);
+
+}
+
+
+.contact-box h2{
+
+font-family:"Playfair Display",serif;
+
+font-size:43px;
+
+color:var(--navy);
+
+margin-bottom:15px;
+
+}
+
+
+.contact-box p{
+
+color:var(--muted);
+
+margin-bottom:25px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+background:#071126;
+
+color:rgba(255,255,255,.68);
+
+padding:60px 0 25px;
+
+}
+
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:1.5fr 1fr 1fr;
+
+gap:50px;
+
+padding-bottom:45px;
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+.footer-brand{
+
+font-family:"Playfair Display",serif;
+
+font-size:28px;
+
+color:white;
+
+margin-bottom:10px;
+
+}
+
+
+.footer-description{
+
+font-size:12px;
+
+max-width:350px;
+
+}
+
+
+.footer-heading{
+
+font-size:10px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:var(--gold-light);
+
+margin-bottom:17px;
+
+}
+
+
+.footer-links{
+
+display:flex;
+
+flex-direction:column;
+
+gap:9px;
+
+font-size:12px;
+
+}
+
+
+.footer-links a:hover{
+
+color:white;
+
+}
+
+
+.copyright{
+
+text-align:center;
+
+padding-top:25px;
+
+font-size:10px;
+
+color:rgba(255,255,255,.4);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1050px){
+
+.book-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+
+@media(max-width:900px){
+
+.nav-links{
+
+display:none;
+
+}
+
+
+.hero-inner,
+.featured-grid,
+.about-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.hero-inner{
+
+text-align:center;
+
+}
+
+
+.hero-description{
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+
+.hero-book{
+
+order:-1;
+
+}
+
+
+.book-grid,
+.values-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+
+@media(max-width:600px){
+
+.top-message{
+
+font-size:8px;
+
+letter-spacing:1.5px;
+
+}
+
+
+.logo-name{
+
+font-size:21px;
+
+}
+
+
+.hero-inner{
+
+padding:55px 0;
+
+}
+
+
+.hero h1{
+
+font-size:44px;
+
+}
+
+
+.hero-description{
+
+font-size:15px;
+
+}
+
+
+.trust-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.trust-item{
+
+border-right:none;
+
+border-bottom:1px solid var(--border);
+
+}
+
+
+.trust-item:last-child{
+
+border-bottom:none;
+
+}
+
+
+section{
+
+padding:75px 0;
+
+}
+
+
+.book-grid,
+.values-grid,
+.footer-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.author-card{
+
+padding:35px;
+
+}
+
+
+.author-card h2,
+.about-text h2,
+.parents-inner h2,
+.newsletter h2,
+.coming h2,
+.contact-box h2{
+
+font-size:36px;
+
+}
+
+
+.featured-title{
+
+font-size:38px;
+
+}
+
+
+.email-box{
+
+flex-direction:column;
+
+background:transparent;
+
+gap:8px;
+
+}
+
+
+.email-box input{
+
+min-height:50px;
+
+}
+
+
+.email-box button{
+
+min-height:50px;
+
+}
+
+}
+
+</style>
+
 </head>
+
+
 
 <body>
 
+
+<!-- =========================================================
+     TOP MESSAGE
+========================================================= -->
+
+<div class="top-message">
+
+MAGICAL STORIES • CURIOUS MINDS • BIG IMAGINATIONS
+
+</div>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
 <header>
-  <div class="container nav">
-    <a href="#home" class="brand">
-      E.C. VICTORIA
-      <span>AUTHOR & STORYTELLER</span>
-    </a>
 
-    <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+<div class="container nav">
 
-    <nav>
-      <ul id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+
+<a href="#home" class="logo">
+
+<span class="logo-name">
+
+E.C. VICTORIA
+
+</span>
+
+<span class="logo-subtitle">
+
+Children's Books
+
+</span>
+
+</a>
+
+
+<nav>
+
+<ul class="nav-links">
+
+<li>
+<a href="#books">Books</a>
+</li>
+
+<li>
+<a href="#about">About</a>
+</li>
+
+<li>
+<a href="#parents">For Parents</a>
+</li>
+
+<li>
+<a href="#coming">Coming Soon</a>
+</li>
+
+<li>
+<a href="#contact" class="nav-shop">Contact</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+</div>
+
 </header>
 
-<main>
 
-  <section class="hero" id="home">
-    <div>
-      <div class="eyebrow">Welcome to the world of E.C. Victoria</div>
 
-      <h1>Stories that <em>inspire</em>, imagine & connect.</h1>
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-      <p>
-        Discover children's stories, journals and thoughtful books created
-        to spark imagination, encourage reflection and bring readers closer
-        to the stories that matter.
-      </p>
+<main id="home">
 
-      <div class="buttons">
-        <a href="#books" class="btn primary">Explore My Books</a>
-        <a href="#about" class="btn">Meet the Author</a>
-      </div>
-    </div>
-  </section>
+<section class="hero">
 
-  <section id="books">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">The Library</div>
-        <h2>Featured Books</h2>
-        <p>
-          Explore the growing collection of books by E.C. Victoria.
-          Replace the sample covers below with your actual book covers.
-        </p>
-      </div>
 
-      <div class="books">
+<div class="container hero-inner">
 
-        <article class="book">
-          <div class="cover">
-            <div class="cover-content">
-              <small>Children's Story</small>
-              <h3>The Whispering Farm</h3>
-              <small>By E.C. Victoria</small>
-            </div>
-          </div>
-          <h3>The Whispering Farm</h3>
-          <p>
-            A magical children's story filled with curiosity, discovery
-            and the wonders waiting to be found around us.
-          </p>
-          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
-        </article>
 
-        <article class="book">
-          <div class="cover">
-            <div class="cover-content">
-              <small>Children's Book</small>
-              <h3>Your Book Title</h3>
-              <small>By E.C. Victoria</small>
-            </div>
-          </div>
-          <h3>Your Second Book</h3>
-          <p>
-            Add a short, engaging description of your second children's
-            book here.
-          </p>
-          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
-        </article>
+<div>
 
-        <article class="book">
-          <div class="cover">
-            <div class="cover-content">
-              <small>Journal</small>
-              <h3>Your Journal</h3>
-              <small>By E.C. Victoria</small>
-            </div>
-          </div>
-          <h3>Your Journal</h3>
-          <p>
-            Add a short description explaining what makes your journal
-            useful and special to your readers.
-          </p>
-          <a class="text-link" href="YOUR-AMAZON-LINK-HERE" target="_blank">Buy the Book →</a>
-        </article>
 
-      </div>
-    </div>
-  </section>
+<div class="hero-label">
 
-  <section id="about">
-    <div class="container about">
+Welcome to the world of E.C. Victoria
 
-      <div class="author-photo">
-        <span>Replace this area with your author photograph</span>
-      </div>
+</div>
 
-      <div>
-        <div class="eyebrow">About the Author</div>
-        <h2>Welcome to my little corner of the literary world.</h2>
 
-        <p>
-          I am E.C. Victoria, an author passionate about creating stories
-          that entertain, inspire imagination and leave readers with
-          something meaningful to carry with them.
-        </p>
+<h1>
 
-        <p>
-          My writing journey began with a simple belief: a good story can
-          open a door to another world. Through children's books, journals
-          and future projects, I hope to create books that readers can
-          enjoy, treasure and return to.
-        </p>
+Stories that make
 
-        <p class="signature">— E.C. Victoria</p>
-      </div>
+<span>little imaginations soar.</span>
 
-    </div>
-  </section>
+</h1>
 
-  <section id="blog">
-    <div class="container">
 
-      <div class="section-head">
-        <div class="eyebrow">From the Journal</div>
-        <h2>Stories, Ideas & Inspiration</h2>
-        <p>
-          Share your writing journey, book news, behind-the-scenes stories
-          and helpful articles with your readers.
-        </p>
-      </div>
+<p class="hero-description">
 
-      <div class="posts">
+Discover beautifully imagined children's stories
+created to inspire curiosity, courage, kindness
+and wonder — one adventure at a time.
 
-        <article class="post">
-          <small>Author Journey</small>
-          <h3>Behind the Story: The Whispering Farm</h3>
-          <p>
-            Share the inspiration, ideas and creative process behind your
-            first children's book.
-          </p>
-          <br>
-          <a href="#" class="text-link">Read Article →</a>
-        </article>
+</p>
 
-        <article class="post">
-          <small>Children & Reading</small>
-          <h3>Why Stories Matter to a Child's Imagination</h3>
-          <p>
-            Write about the importance of storytelling, reading and
-            imagination in childhood.
-          </p>
-          <br>
-          <a href="#" class="text-link">Read Article →</a>
-        </article>
 
-        <article class="post">
-          <small>Writing Life</small>
-          <h3>My Journey as an Independent Author</h3>
-          <p>
-            Tell readers about your experience creating and publishing
-            your books.
-          </p>
-          <br>
-          <a href="#" class="text-link">Read Article →</a>
-        </article>
+<div class="hero-buttons">
 
-      </div>
-    </div>
-  </section>
 
-  <section class="newsletter">
-    <div class="container">
-      <h2>Be the first to hear about new books.</h2>
-      <p>
-        Invite readers to follow your journey and receive announcements
-        about new releases, stories and author updates.
-      </p>
-      <a href="YOUR-EMAIL-SIGNUP-LINK-HERE" class="btn">Join the Reading List</a>
-    </div>
-  </section>
+<a href="#books" class="button button-gold">
 
-  <section id="contact">
-    <div class="container contact">
-      <div class="eyebrow">Get in Touch</div>
-      <h2>Let's Connect</h2>
-      <p>
-        For questions, collaborations, book-related enquiries or simply
-        to say hello, I'd love to hear from you.
-      </p>
+DISCOVER THE BOOKS
 
-      <div class="buttons">
-        <a href="mailto:YOUR-EMAIL-HERE@example.com" class="btn primary">Email E.C. Victoria</a>
-      </div>
-    </div>
-  </section>
+</a>
+
+
+<a href="#about" class="button button-outline">
+
+MEET THE AUTHOR
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="hero-book">
+
+
+<img
+src="tiny-dinosaur-moon.png"
+alt="The Tiny Dinosaur Who Followed the Moon by E.C. Victoria">
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRUST
+========================================================= -->
+
+<div class="trust">
+
+<div class="container trust-grid">
+
+
+<div class="trust-item">
+
+<div class="trust-title">
+Created for Young Readers
+</div>
+
+<div class="trust-text">
+Stories created with childhood imagination in mind.
+</div>
+
+</div>
+
+
+<div class="trust-item">
+
+<div class="trust-title">
+Magical Adventures
+</div>
+
+<div class="trust-text">
+Beautiful worlds filled with discovery and wonder.
+</div>
+
+</div>
+
+
+<div class="trust-item">
+
+<div class="trust-title">
+Digital Reading
+</div>
+
+<div class="trust-text">
+Enjoy your stories on phones, tablets and computers.
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FEATURED BOOK
+========================================================= -->
+
+<section class="featured">
+
+<div class="container">
+
+
+<div class="featured-intro">
+
+<div class="section-label">
+Featured Story
+</div>
+
+<h2 class="section-title">
+A new adventure is waiting.
+</h2>
+
+<p class="section-description">
+
+Step into a world where the night sky holds secrets
+and even the smallest dinosaur can follow a very big dream.
+
+</p>
+
+</div>
+
+
+
+<div class="featured-grid">
+
+
+<div class="featured-cover">
+
+<img
+src="tiny-dinosaur-moon.png"
+alt="The Tiny Dinosaur Who Followed the Moon book cover">
+
+</div>
+
+
+
+<div>
+
+
+<div class="section-label">
+
+A Moon That Collected Dreams Adventure
+
+</div>
+
+
+<h2 class="featured-title">
+
+The Tiny Dinosaur Who Followed the Moon
+
+</h2>
+
+
+<div class="featured-subtitle">
+
+A magical journey for young dreamers.
+
+</div>
+
+
+<p class="featured-text">
+
+What happens when a tiny dinosaur looks up at
+the moon and decides to follow its mysterious glow?
+
+</p>
+
+
+<p class="featured-text">
+
+This enchanting children's adventure invites young
+readers into a world of moonlight, discovery,
+friendship and imagination.
+
+</p>
+
+
+<div class="book-tags">
+
+<span class="book-tag">
+Children's Book
+</span>
+
+<span class="book-tag">
+Ages 3–5
+</span>
+
+<span class="book-tag">
+Digital Edition
+</span>
+
+</div>
+
+
+<!-- =====================================================
+     CHANGE THIS LINK TO YOUR REAL STORE LINK
+===================================================== -->
+
+<a
+href="YOUR-STORE-LINK-HERE"
+target="_blank"
+rel="noopener"
+class="button button-gold">
+
+BUY THE EBOOK
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     BOOK LIBRARY
+========================================================= -->
+
+<section class="books" id="books">
+
+<div class="container">
+
+
+<div class="books-heading">
+
+<div class="section-label">
+The Book Collection
+</div>
+
+<h2 class="section-title">
+Stories for curious little minds.
+</h2>
+
+<p class="section-description">
+
+Explore the growing collection of magical children's
+stories from E.C. Victoria.
+
+</p>
+
+</div>
+
+
+
+<div class="book-grid">
+
+
+<!-- =====================================================
+     BOOK 01
+===================================================== -->
+
+<article class="book-card">
+
+
+<div class="book-cover">
+
+<img
+src="tiny-dinosaur-moon.png"
+alt="The Tiny Dinosaur Who Followed the Moon">
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 01
+</div>
+
+<h3 class="book-title">
+The Tiny Dinosaur Who Followed the Moon
+</h3>
+
+<p class="book-description">
+A magical moonlit adventure for young dreamers.
+</p>
+
+<a
+href="YOUR-STORE-LINK-HERE"
+target="_blank"
+rel="noopener"
+class="book-button">
+
+BUY THE EBOOK →
+
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 02
+===================================================== -->
+
+<article class="book-card">
+
+
+<div class="book-cover">
+
+<img
+src="whispering-farm-cover.jpg"
+alt="The Whispering Farm by E.C. Victoria">
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 02
+</div>
+
+<h3 class="book-title">
+The Whispering Farm
+</h3>
+
+<p class="book-description">
+A magical countryside adventure filled with mystery,
+friendship and discovery.
+</p>
+
+<a
+href="YOUR-STORE-LINK-HERE"
+target="_blank"
+rel="noopener"
+class="book-button">
+
+BUY THE EBOOK →
+
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 03
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-03.jpg"
+alt="Book 03 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 03
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 03
+</div>
+
+<h3 class="book-title">
+Your Next Story
+</h3>
+
+<p class="book-description">
+A new adventure is waiting to be discovered.
+</p>
+
+<a
+href="YOUR-STORE-LINK-HERE"
+target="_blank"
+rel="noopener"
+class="book-button">
+
+ADD BOOK →
+
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 04
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-04.jpg"
+alt="Book 04 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 04
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 04
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+Another magical story from E.C. Victoria.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 05
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-05.jpg"
+alt="Book 05 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 05
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 05
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+A new world of imagination is on the way.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 06
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-06.jpg"
+alt="Book 06 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 06
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 06
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+More stories for curious young readers.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 07
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-07.jpg"
+alt="Book 07 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 07
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 07
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+Another story is being created.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 08
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-08.jpg"
+alt="Book 08 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 08
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 08
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+A new adventure for little dreamers.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 09
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-09.jpg"
+alt="Book 09 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 09
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 09
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+New characters. New worlds. New adventures.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 10
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-10.jpg"
+alt="Book 10 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 10
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 10
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+A future story from the E.C. Victoria collection.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 11
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-11.jpg"
+alt="Book 11 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 11
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 11
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+Another magical adventure is coming.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+
+<!-- =====================================================
+     BOOK 12
+===================================================== -->
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<img
+src="book-12.jpg"
+alt="Book 12 by E.C. Victoria"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="placeholder" style="display:none;">
+BOOK 12
+</div>
+
+</div>
+
+
+<div class="book-content">
+
+<div class="book-number">
+BOOK 12
+</div>
+
+<h3 class="book-title">
+Coming Soon
+</h3>
+
+<p class="book-description">
+The collection continues to grow.
+</p>
+
+<a href="#coming" class="book-button">
+COMING SOON →
+</a>
+
+</div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     STORYTELLING VALUES
+========================================================= -->
+
+<section class="values">
+
+<div class="container">
+
+
+<div class="values-heading">
+
+<div class="section-label">
+The E.C. Victoria Difference
+</div>
+
+<h2 class="section-title">
+Stories with heart, wonder and imagination.
+</h2>
+
+<p class="section-description">
+
+Every story is created to give young readers
+something memorable to discover.
+
+</p>
+
+</div>
+
+
+
+<div class="values-grid">
+
+
+<div class="value-card">
+
+<div class="value-number">
+01
+</div>
+
+<h3>
+Imagination
+</h3>
+
+<p>
+Stories that invite children to explore worlds
+beyond the ordinary.
+</p>
+
+</div>
+
+
+
+<div class="value-card">
+
+<div class="value-number">
+02
+</div>
+
+<h3>
+Curiosity
+</h3>
+
+<p>
+Adventures that encourage young readers to ask
+questions and discover new possibilities.
+</p>
+
+</div>
+
+
+
+<div class="value-card">
+
+<div class="value-number">
+03
+</div>
+
+<h3>
+Heart
+</h3>
+
+<p>
+Stories celebrating friendship, courage,
+kindness, hope and wonder.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT AUTHOR
+========================================================= -->
+
+<section class="about" id="about">
+
+<div class="container about-grid">
+
+
+<div class="author-card">
+
+<div class="section-label">
+About the Author
+</div>
+
+<h2>
+Meet<br>
+E.C. Victoria
+</h2>
+
+<p>
+
+An author creating imaginative stories
+for young readers and the families
+who share those stories with them.
+
+</p>
+
+</div>
+
+
+
+<div class="about-text">
+
+<h2>
+Welcome to my story world.
+</h2>
+
+
+<p>
+
+I believe children's books can open doors
+to worlds that exist only in the imagination.
+
+</p>
+
+
+<p>
+
+Through memorable characters, magical adventures
+and beautifully imagined worlds, my goal is to create
+stories children will want to read again and again.
+
+</p>
+
+
+<p>
+
+Welcome to a growing collection of stories
+created for curious little minds.
+
+</p>
+
+
+<a href="#books" class="button button-gold">
+
+EXPLORE THE BOOKS
+
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PARENTS
+========================================================= -->
+
+<section class="parents" id="parents">
+
+<div class="container parents-inner">
+
+
+<div class="section-label">
+For Parents & Educators
+</div>
+
+
+<h2>
+Choosing a story is choosing a world.
+</h2>
+
+
+<p>
+
+Find children's stories designed to encourage
+imagination, curiosity, friendship, courage
+and a love of reading.
+
+</p>
+
+
+<a
+href="mailto:Ehiogunvictoria@gmail.com"
+class="button button-gold">
+
+CONTACT THE AUTHOR
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
+<section class="newsletter">
+
+<div class="container newsletter-inner">
+
+
+<div class="section-label">
+Stay in the Story
+</div>
+
+
+<h2>
+Be the first to discover new adventures.
+</h2>
+
+
+<p>
+
+Join the E.C. Victoria reading community for
+new-book announcements and future story releases.
+
+</p>
+
+
+<!--
+NOTE:
+This form currently opens the visitor's email program.
+It does NOT store email addresses.
+
+A professional email marketing service can be connected later.
+-->
+
+<form
+class="email-box"
+action="mailto:Ehiogunvictoria@gmail.com"
+method="post"
+enctype="text/plain">
+
+
+<input
+type="email"
+name="email"
+placeholder="Your email address"
+required>
+
+
+<button
+type="submit"
+class="button button-gold">
+
+JOIN THE STORY
+
+</button>
+
+
+</form>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     COMING SOON
+========================================================= -->
+
+<section class="coming" id="coming">
+
+<div class="container">
+
+
+<div class="section-label">
+More Stories Are Coming
+</div>
+
+
+<h2>
+The story doesn't end here.
+</h2>
+
+
+<p>
+
+New characters, new adventures and new worlds
+are already being imagined.
+
+</p>
+
+
+<a href="#books" class="button button-gold">
+
+EXPLORE THE COLLECTION
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+
+<div class="contact-box">
+
+
+<div class="section-label">
+Get in Touch
+</div>
+
+
+<h2>
+Let's talk about books.
+</h2>
+
+
+<p>
+
+For questions about books, author enquiries,
+collaborations or children's reading opportunities,
+please contact E.C. Victoria.
+
+</p>
+
+
+<a
+href="mailto:Ehiogunvictoria@gmail.com"
+class="button button-gold">
+
+Ehiogunvictoria@gmail.com
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
 
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="copyright">
-      © <span id="year"></span> E.C. Victoria. All rights reserved.
-    </div>
 
-    <div class="socials">
-      <a href="YOUR-FACEBOOK-LINK" target="_blank">Facebook</a>
-      <a href="YOUR-INSTAGRAM-LINK" target="_blank">Instagram</a>
-      <a href="YOUR-YOUTUBE-LINK" target="_blank">YouTube</a>
-    </div>
-  </div>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container footer-grid">
+
+
+<div>
+
+<div class="footer-brand">
+E.C. Victoria
+</div>
+
+
+<p class="footer-description">
+
+Children's books created to inspire
+imagination, curiosity and wonder.
+
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="footer-heading">
+Explore
+</div>
+
+
+<div class="footer-links">
+
+<a href="#home">
+Home
+</a>
+
+<a href="#books">
+Books
+</a>
+
+<a href="#about">
+About the Author
+</a>
+
+<a href="#parents">
+For Parents
+</a>
+
+<a href="#coming">
+Coming Soon
+</a>
+
+</div>
+
+</div>
+
+
+
+<div>
+
+<div class="footer-heading">
+Contact
+</div>
+
+
+<div class="footer-links">
+
+<a href="mailto:Ehiogunvictoria@gmail.com">
+Email the Author
+</a>
+
+<a href="#books">
+Explore Books
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="container copyright">
+
+© 2026 E.C. Victoria. All rights reserved.
+
+</div>
+
 </footer>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("open");
-  }
 
-  document.querySelectorAll("#navLinks a").forEach(link => {
-    link.addEventListener("click", () => {
-      document.getElementById("navLinks").classList.remove("open");
-    });
-  });
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
 </body>
+
 </html>
